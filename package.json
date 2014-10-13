@@ -1,0 +1,33 @@
+{
+  "name": "deep-keys",
+  "version": "0.1.0",
+  "description": "Creates an array composed of the own enumerable property names(including nested) of an object.",
+  "license": "MIT",
+  "repository": "a8m/deep-keys",
+  "author": {
+    "name": "Ariel Mashraki",
+    "email": "ariel@mashraki.co.il",
+    "url": "https://github.com/a8m/deep-keys"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --harmony-generators test.js -u bdd -R spec"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "map",
+    "obj",
+    "object",
+    "key",
+    "keys",
+    "deep-keys",
+    "nested-keys"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
