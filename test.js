@@ -21,7 +21,7 @@ describe('deep-keys', function() {
   });
 
   it('should return deep keys', function() {
-    var deepObj = {
+    var obj1 = {
       a: 1,
       b: { c: 1 },
       c: { d: { e: 1 }, f: 1 },
@@ -29,7 +29,23 @@ describe('deep-keys', function() {
       e: 2,
       f: { g: [] }
     };
-    expectEqual(keys(deepObj), ['a', 'b.c', 'c.d.e', 'c.f', 'd.e.f.g', 'd.e.f.h', 'e', 'f.g']);
+    expectEqual(keys(obj1), ['a', 'b.c', 'c.d.e', 'c.f', 'd.e.f.g', 'd.e.f.h', 'e', 'f.g']);
+
+    var obj2 = {
+      type: 'customer',
+      details: {
+        name: 'Ariel', age: 26, address: { city: 'Tel Aviv', country: 'Israel' }
+      },
+      isActive: true
+    };
+    expectEqual(keys(obj2), [
+      'type',
+      'details.name',
+      'details.age',
+      'details.address.city',
+      'details.address.country',
+      'isActive'
+    ]);
   });
 
 });
