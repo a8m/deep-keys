@@ -1,4 +1,4 @@
-# deep-keys
+# deep-keys [![Build Status](https://travis-ci.org/a8m/deep-keys.svg?branch=master)](https://travis-ci.org/a8m/deep-keys)
 
 > Creates an array composed of the own enumerable property names(including nested) of an object.
 
