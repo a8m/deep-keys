@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --harmony-generators test.js -u bdd -R spec"
+    "test": "./node_modules/mocha/bin/mocha test.js -u bdd -R spec"
   },
   "files": [
     "index.js"
