@@ -2,6 +2,8 @@
 
 > Creates an array composed of the own enumerable property names(including nested) of an object.
 
+**Note:** This kit works great with [obj-parse](https://github.com/a8m/obj-parse) _(get and set object properties in a fast and elegant way)._
+
 ## Install
 
 ```sh
