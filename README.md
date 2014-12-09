@@ -1,4 +1,10 @@
-# deep-keys [![Build Status](https://travis-ci.org/a8m/deep-keys.svg?branch=master)](https://travis-ci.org/a8m/deep-keys) [![Coverage Status](https://img.shields.io/coveralls/a8m/deep-keys.svg)](https://coveralls.io/r/a8m/deep-keys?branch=master)
+# deep-keys 
+[![NPM version][npm-image]][npm-url]
+[![Build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Dependency Status][david-image]][david-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
 
 > Creates an array composed of the own enumerable property names(including nested) of an object.
 
@@ -41,3 +47,15 @@ deepKeys(obj2);
 ## License
 
 MIT © [Ariel Mashraki](https://github.com/a8m)
+[npm-image]: https://img.shields.io/npm/v/deep-keys.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/deep-keys
+[travis-image]: https://img.shields.io/travis/a8m/deep-keys.svg?style=flat-square
+[travis-url]: https://travis-ci.org/a8m/deep-keys
+[coveralls-image]: https://img.shields.io/coveralls/a8m/deep-keys.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/a8m/deep-keys
+[david-image]: http://img.shields.io/david/a8m/deep-keys.svg?style=flat-square
+[david-url]: https://david-dm.org/a8m/deep-keys
+[license-image]: http://img.shields.io/npm/l/deep-keys.svg?style=flat-square
+[license-url]: LICENSE
+[downloads-image]: http://img.shields.io/npm/dm/deep-keys.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/deep-keys
