@@ -18,26 +18,23 @@ function isObject(value) {
  */
 var isArray = Array.isArray;
 
-var deepKeysWithIntermediate = function(obj, stack, parent, intermediate) {
-  stack = stack || [];
-  var keys = Object.keys(obj);
-
-  keys.forEach(function(el) {
-    //if it's a nested object
+function deepKeys(obj, stack, parent, intermediate) {
+  Object.keys(obj).forEach(function(el) {
+    // If it's a nested object
     if(isObject(obj[el]) && !isArray(obj[el])) {
-      //concatenate the new parent if exist
+      // Concatenate the new parent if exist
       var p = parent ? parent + '.' + el : parent;
-      //Push intermediate parent key if flag is true
-      intermediate && stack.push(parent ? p:el);
-      deepKeysWithIntermediate(obj[el], stack, p || el, intermediate);
+      // Push intermediate parent key if flag is true
+      if (intermediate) stack.push(parent ? p : el);
+      deepKeys(obj[el], stack, p || el, intermediate);
     } else {
-      //create and save the key
+      // Create and save the key
       var key = parent ? parent + '.' + el : el;
       stack.push(key)
     }
   });
   return stack
-};
+}
 
 /**
  * @description
@@ -51,6 +48,6 @@ var deepKeysWithIntermediate = function(obj, stack, parent, intermediate) {
  * @example
  * deepKeys({ b: { c:2, d: { e: 3 } } }) ==> ["b", "b.c", "b.d", "b.d.e"]
  */
-module.exports = function deepKeys(obj, intermediate) {
-  return deepKeysWithIntermediate(obj, [], null, intermediate);
+module.exports = function (obj, intermediate) {
+  return deepKeys(obj, [], null, intermediate);
 };
