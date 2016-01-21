@@ -18,17 +18,7 @@ function isObject(value) {
  */
 var isArray = Array.isArray;
 
-/**
- * @description
- * Get an object, and return an array composed of it's properties names(nested too).
- * @param obj {Object}
- * @param stack {Array}
- * @param parent {String}
- * @returns {Array}
- * @example
- * parseKeys({ a:1, b: { c:2, d: { e: 3 } } }) ==> ["a", "b.c", "b.d.e"]
- */
-module.exports = function deepKeys(obj, stack, parent) {
+var deepKeysWithIntermediate = function(obj, stack, parent, intermediate) {
   stack = stack || [];
   var keys = Object.keys(obj);
 
@@ -37,7 +27,9 @@ module.exports = function deepKeys(obj, stack, parent) {
     if(isObject(obj[el]) && !isArray(obj[el])) {
       //concatenate the new parent if exist
       var p = parent ? parent + '.' + el : parent;
-      deepKeys(obj[el], stack, p || el);
+      //Push intermediate parent key if flag is true
+      intermediate && stack.push(parent ? p:el);
+      deepKeysWithIntermediate(obj[el], stack, p || el, intermediate);
     } else {
       //create and save the key
       var key = parent ? parent + '.' + el : el;
@@ -45,4 +37,20 @@ module.exports = function deepKeys(obj, stack, parent) {
     }
   });
   return stack
+};
+
+/**
+ * @description
+ * Get an object, and return an array composed of it's properties names(nested too).
+ * With intermediate equals to true, we include also the intermediate parent keys into the result
+ * @param obj {Object}
+ * @param intermediate {Boolean}
+ * @returns {Array}
+ * @example
+ * deepKeys({ a:1, b: { c:2, d: { e: 3 } } }) ==> ["a", "b.c", "b.d.e"]
+ * @example
+ * deepKeys({ b: { c:2, d: { e: 3 } } }) ==> ["b", "b.c", "b.d", "b.d.e"]
+ */
+module.exports = function deepKeys(obj, intermediate) {
+  return deepKeysWithIntermediate(obj, [], null, intermediate);
 };
