@@ -47,5 +47,18 @@ describe('deep-keys', function() {
       'isActive'
     ]);
   });
+  
+  it('should return deep keys including intermediate parent keys', function() {
+    var obj1 = {
+      a: 1,
+      b: { c: 1 },
+      c: { d: { e: 1 }, f: 1 },
+      d: { e: { f: { g: 1, h: 2 } } },
+      e: 2,
+      f: { g: [] }
+    };
+    expectEqual(keys(obj1, true), ['a', 'b', 'b.c', 'c', 'c.d', 'c.d.e', 'c.f',
+    'd', 'd.e', 'd.e.f', 'd.e.f.g', 'd.e.f.h', 'e', 'f', 'f.g']);
+  });
 
 });

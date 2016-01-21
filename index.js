@@ -27,6 +27,8 @@ var deepKeysWithIntermediate = function(obj, stack, parent, intermediate) {
     if(isObject(obj[el]) && !isArray(obj[el])) {
       //concatenate the new parent if exist
       var p = parent ? parent + '.' + el : parent;
+      //Push intermediate parent key if flag is true
+      intermediate && stack.push(parent ? p:el);
       deepKeysWithIntermediate(obj[el], stack, p || el, intermediate);
     } else {
       //create and save the key
