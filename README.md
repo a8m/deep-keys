@@ -17,7 +17,7 @@ $ npm install --save deep-keys
 ```
 
 ## Usage
-
+##### `deepKeys(obj, intermediate[optional])`
 ```js
 var deepKeys = require('deep-keys');
 
@@ -41,6 +41,11 @@ var obj2 = {
 };
 deepKeys(obj2);
 //=> ['type', 'details.name', 'details.age', 'details.address.city', 'details.address.country', 'isActive']
+
+// intermediate example
+var obj3 = {a:{b:{c:1}}};
+deepKeys(obj3);       //=> [ 'a.b.c' ]
+deepKeys(obj3, true); //=> [ 'a', 'a.b', 'a.b.c' ]
 ```
 
 
