@@ -46,6 +46,10 @@ deepKeys(obj2);
 var obj3 = {a:{b:{c:1}}};
 deepKeys(obj3);       //=> [ 'a.b.c' ]
 deepKeys(obj3, true); //=> [ 'a', 'a.b', 'a.b.c' ]
+
+// Dots in key names get escaped
+var obj4 = { 'a.': { b: 1} };
+deepKeys(obj4) //=> [ 'a\\..b' ]
 ```
 
 
