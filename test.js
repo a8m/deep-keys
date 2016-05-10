@@ -47,7 +47,7 @@ describe('deep-keys', function() {
       'isActive'
     ]);
   });
-  
+
   it('should return deep keys including intermediate parent keys', function() {
     var obj1 = {
       a: 1,
@@ -59,6 +59,13 @@ describe('deep-keys', function() {
     };
     expectEqual(keys(obj1, true), ['a', 'b', 'b.c', 'c', 'c.d', 'c.d.e', 'c.f',
     'd', 'd.e', 'd.e.f', 'd.e.f.g', 'd.e.f.h', 'e', 'f', 'f.g']);
+  });
+
+  it('should escape . in key names', function() {
+    var obj1 = { a: { '.b': 1 } };
+    expectEqual(keys(obj1), ['a.\\.b']);
+    var obj2 = { 'a.': { b: 1 } };
+    expectEqual(keys(obj2, true), ['a\\.', 'a\\..b']);
   });
 
 });

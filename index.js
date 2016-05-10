@@ -20,16 +20,18 @@ var isArray = Array.isArray;
 
 function deepKeys(obj, stack, parent, intermediate) {
   Object.keys(obj).forEach(function(el) {
+    // Escape . in the element name
+    var escaped = el.replace(/\./g, '\\\.');
     // If it's a nested object
     if(isObject(obj[el]) && !isArray(obj[el])) {
       // Concatenate the new parent if exist
       var p = parent ? parent + '.' + el : parent;
       // Push intermediate parent key if flag is true
-      if (intermediate) stack.push(parent ? p : el);
-      deepKeys(obj[el], stack, p || el, intermediate);
+      if (intermediate) stack.push(parent ? p : escaped);
+      deepKeys(obj[el], stack, p || escaped, intermediate);
     } else {
       // Create and save the key
-      var key = parent ? parent + '.' + el : el;
+      var key = parent ? parent + '.' + escaped : escaped;
       stack.push(key)
     }
   });
@@ -46,7 +48,9 @@ function deepKeys(obj, stack, parent, intermediate) {
  * @example
  * deepKeys({ a:1, b: { c:2, d: { e: 3 } } }) ==> ["a", "b.c", "b.d.e"]
  * @example
- * deepKeys({ b: { c:2, d: { e: 3 } } }) ==> ["b", "b.c", "b.d", "b.d.e"]
+ * deepKeys({ b: { c:2, d: { e: 3 } } }, true) ==> ["b", "b.c", "b.d", "b.d.e"]
+ * @example
+ * deepKeys({ 'a.': { b: 1 }) ==> ["a\..b"]
  */
 module.exports = function (obj, intermediate) {
   return deepKeys(obj, [], null, intermediate);
