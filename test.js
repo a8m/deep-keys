@@ -36,7 +36,8 @@ describe('deep-keys', function() {
       details: {
         name: 'Ariel', age: 26, address: { city: 'Tel Aviv', country: 'Israel' }
       },
-      isActive: true
+      isActive: true,
+      createdAt: new Date()
     };
     expectEqual(keys(obj2), [
       'type',
@@ -44,7 +45,8 @@ describe('deep-keys', function() {
       'details.age',
       'details.address.city',
       'details.address.country',
-      'isActive'
+      'isActive',
+      'createdAt'
     ]);
   });
 
