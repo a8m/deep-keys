@@ -56,6 +56,7 @@ deepKeys(obj4) //=> [ 'a\\..b' ]
 ## License
 
 MIT © [Ariel Mashraki](https://github.com/a8m)
+
 [npm-image]: https://img.shields.io/npm/v/deep-keys.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/deep-keys
 [travis-image]: https://img.shields.io/travis/a8m/deep-keys.svg?style=flat-square
@@ -68,3 +69,4 @@ MIT © [Ariel Mashraki](https://github.com/a8m)
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/deep-keys.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/deep-keys
+
