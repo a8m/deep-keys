@@ -68,6 +68,10 @@ describe('deep-keys', function() {
     expectEqual(keys(obj1), ['a.\\.b']);
     var obj2 = { 'a.': { b: 1 } };
     expectEqual(keys(obj2, true), ['a\\.', 'a\\..b']);
+    var obj3 = { a: { 'b.d': { c: 1 } } };
+    expectEqual(keys(obj3), ['a.b\\.d.c']);
+    var obj4 = { a: { 'b.d': { c: 1 } } };
+    expectEqual(keys(obj4, true), ['a','a.b\\.d', 'a.b\\.d.c']);
   });
 
 });
