@@ -25,7 +25,7 @@ function deepKeys(obj, stack, parent, intermediate) {
     // If it's a nested object
     if(isObject(obj[el]) && !isArray(obj[el])) {
       // Concatenate the new parent if exist
-      var p = parent ? parent + '.' + el : parent;
+      var p = parent ? parent + '.' + escaped : parent;
       // Push intermediate parent key if flag is true
       if (intermediate) stack.push(parent ? p : escaped);
       deepKeys(obj[el], stack, p || escaped, intermediate);

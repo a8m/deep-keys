@@ -29,6 +29,6 @@
   ],
   "devDependencies": {
     "istanbul": "^0.3.2",
-    "mocha": "*"
+    "mocha": "^3.5.3"
   }
 }
